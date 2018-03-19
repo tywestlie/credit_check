@@ -62,7 +62,7 @@ class TestCreditCheck <Minitest::Test
   def test_invalid
     card = CreditCheck.new("4024007106512380")
 
-    assert_equal false, card.valid
+    assert_nil  card.valid
   end
 
   def test_too_short

@@ -6,8 +6,8 @@ class CreditCheck
   end
 
   def correct_length
-    return false if creditnumber.length != 15 && creditnumber.length != 16
-    return true
+    return true if creditnumber.length == 16 || creditnumber.length == 15
+    return false
   end
 
   def convert_to_integer
@@ -40,8 +40,7 @@ class CreditCheck
   end
 
   def valid
+    return false if sum_digits == 0
     return true if sum_digits % 10 == 0 && correct_length == true
-    return false
   end
-
 end
