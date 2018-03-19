@@ -11,10 +11,10 @@ class TestCreditCheck <Minitest::Test
     assert_instance_of CreditCheck , card
   end
 
-   def test_correct_length
+  def test_correct_length
     card = CreditCheck.new("5541808923795240")
 
-    assert true , card.correct_length("5541808923795240")
+    assert true , card.correct_length
   end
 
   def test_convert_to_integer
@@ -56,13 +56,25 @@ class TestCreditCheck <Minitest::Test
   def test_valid
     card = CreditCheck.new("5541808923795240")
 
-    assert_equal "Your card is valid.", card.valid
+    assert_equal true, card.valid
   end
 
   def test_invalid
     card = CreditCheck.new("4024007106512380")
 
-    assert_equal "Your card is invalid.", card.valid
+    assert_equal false, card.valid
+  end
+
+  def test_too_short
+    card = CreditCheck.new("402400")
+
+    assert_equal false, card.correct_length
+  end
+
+  def test_too_long
+    card = CreditCheck.new("40240071065123800")
+
+    assert_equal false, card.correct_length
   end
 
 end

@@ -5,8 +5,8 @@ class CreditCheck
     @creditnumber = num
   end
 
-  def correct_length(creditnumber)
-    return false if creditnumber.length ==! 15 && creditnumber.length ==! 16
+  def correct_length
+    return false if creditnumber.length != 15 && creditnumber.length != 16
     return true
   end
 
@@ -40,8 +40,8 @@ class CreditCheck
   end
 
   def valid
-    return "Your card is valid." if sum_digits % 10 == 0 && correct_length(creditnumber) == true
-    return "Your card is invalid."
+    return true if sum_digits % 10 == 0 && correct_length == true
+    return false
   end
 
 end
