@@ -1,6 +1,6 @@
-require './lib/credit_check_rd'
+require './lib/credit_check'
 
 puts "Enter a credit card number"
 num = gets.chomp
 card = CreditCheck.new(num)
-puts card.valid? 
+puts card.valid
